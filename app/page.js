@@ -1,9 +1,17 @@
-import Image from 'next/image'
 
-export default function Home() {
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { authOptions } from "./api/auth/[...nextauth]/route";
+import LoginForm from "@/components/loginForm";
+
+export default async function Home() {
+  const session = await getServerSession(authOptions);
+
+  if (session) redirect("/dashboard");
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-     
+    <main>
+      <LoginForm />
     </main>
-  )
+  );
 }

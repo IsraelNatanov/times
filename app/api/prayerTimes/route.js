@@ -1,5 +1,6 @@
+import PrayerTimesModel from "@/models/prayerTimes";
 import { connectToDB } from "@/utils/database";
-import PrayerTimesModel from "../../models/prayerTimes";
+
 
 
 
