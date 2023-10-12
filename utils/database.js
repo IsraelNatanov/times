@@ -11,7 +11,7 @@ export const connectToDB = async () => {
   }
 
   try {
-    await mongoose.connect(`mongodb+srv://${process.env.USERDB}:${process.env.PASSDB}@cluster0.3ieu4.mongodb.net/idf`, );
+    await mongoose.connect(`mongodb+srv://${process.env.USER_DB}:${process.env.PASS_DB}@cluster0.3ieu4.mongodb.net/idf`, );
     console.log("mongo connected idf")
 
     isConnected = true;
