@@ -1,4 +1,3 @@
-
 import User from "@/models/user";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -16,7 +15,7 @@ export const authOptions = {
 
         try {
           await connectToDB();
-          const user = await User.findOne({ email });
+          let user = await User.findOne({ email });
 
           if (!user) {
             return null;
@@ -35,10 +34,32 @@ export const authOptions = {
       },
     }),
   ],
+  callbacks:{
+    async jwt({token, user, session}){
+        console.log('jwt callbacks', {token, user, session} )
+        if(user){
+            return{
+                ...token,
+                id: user.id,
+
+            }
+        }
+        return token;
+    },
+    async session({session , token, user}){
+        console.log('session callbacks' , {session , token, user});
+        return {
+            ...session,
+            id: token.id
+        }
+        return session;
+    }
+  },
+  secret: process.env.NEXTAUTH_SECRET,
   session: {
     strategy: "jwt",
   },
-  secret: process.env.NEXTAUTH_SECRET,
+ 
   pages: {
     signIn: "/",
   },
