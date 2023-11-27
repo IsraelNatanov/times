@@ -9,14 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.18",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.6",
     "bcryptjs": "^2.4.3",
+    "dayjs": "^1.11.10",
     "dotenv": "^16.3.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.5.3",
     "next": "latest",
     "next-auth": "^4.23.2",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-time-input": "^1.0.1",
+    "react-time-picker": "^6.5.2",
+    "styled-components": "^6.1.1"
   },
   "devDependencies": {
     "autoprefixer": "latest",

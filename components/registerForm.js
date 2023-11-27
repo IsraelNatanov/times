@@ -21,7 +21,7 @@ export default function RegisterForm() {
     }
 
     try {
-      const resUserExists = await fetch("api/userExists", {
+      const resUserExists = await fetch("api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,7 +53,12 @@ export default function RegisterForm() {
         form.reset();
         router.push("/");
       } else {
-        console.log("User registration failed.");
+       
+      if(res.status== 400){
+
+      
+          setError("User already exists.");
+      }
       }
     } catch (error) {
       console.log("Error during registration: ", error);
